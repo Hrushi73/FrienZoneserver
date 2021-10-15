@@ -1,6 +1,7 @@
 //Express
 const express = require("express");
 const app = express();
+app.set("trust proxy", 1);
 const path = require("path");
 //Database
 const mongoose = require("mongoose");
@@ -18,7 +19,7 @@ var cookieParser = require("cookie-parser");
 const Authenticate = require("./middleware/auth");
 //Cors
 const cors = require("cors");
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({ origin: [process.env.CLIENT], credentials: true }));
 
 //other middlewares
 app.use(bodyParser.json());
