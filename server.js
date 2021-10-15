@@ -18,7 +18,7 @@ var cookieParser = require("cookie-parser");
 const Authenticate = require("./middleware/auth");
 //Cors
 const cors = require("cors");
-app.use(cors({ origin: process.env.CLIENT, credentials: true }));
+app.use(cors({ origin: "*", credentials: true }));
 
 //other middlewares
 app.use(bodyParser.json());
