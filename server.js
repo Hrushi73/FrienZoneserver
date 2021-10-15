@@ -35,6 +35,7 @@ const fs = require("fs");
 //signup post request
 app.post("/signup", async (req, res) => {
   const { userName, email, password } = req.body;
+  console.log(req.body);
   const newUser = new User({
     userName: userName,
     email: email,
@@ -42,6 +43,7 @@ app.post("/signup", async (req, res) => {
   });
   await newUser.save(function (err) {
     if (err) {
+      console.log(err);
       if (err.name === "MongoServerError" && err.code === 11000) {
         console.log(err);
         // Duplicate username
@@ -261,5 +263,5 @@ app.post("/getComments", Authenticate, async function (req, res) {
 
 //Port listening
 app.listen(PORT, () => {
-  console.log("App running on port 3001");
+  console.log(PORT);
 });
